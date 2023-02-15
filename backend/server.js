@@ -14,14 +14,6 @@ import MessageRoutes from "./routers/messageRoutes.js";
 
 const app = express();
 
-app.set("trust proxy", 1); // trust the first proxy
-app.use((req, res, next) => {
-  if (req.secure) {
-    req.protocol = "https";
-  }
-  next();
-});
-
 const allowedOrigins = [
   "http://127.0.0.1:5173",
   "https://quickchat-app.netlify.app",
@@ -46,6 +38,14 @@ app.use((err, req, res, next) => {
   } else {
     next();
   }
+});
+
+app.set("trust proxy", 1); // trust the first proxy
+app.use((req, res, next) => {
+  if (req.secure) {
+    req.protocol = "https";
+  }
+  next();
 });
 
 app.use(helmet());
