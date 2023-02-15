@@ -40,7 +40,7 @@ app.use((err, req, res, next) => {
   }
 });
 
-app.use(helmet());
+// app.use(helmet());
 
 // connect and test to PostgreSQL
 connectDB();
@@ -73,6 +73,8 @@ const sessionMiddleware = session({
     httpOnly: true,
   },
 });
+
+console.log("sameSite is: ", process.env.MODE === "production");
 
 app.use(sessionMiddleware);
 
