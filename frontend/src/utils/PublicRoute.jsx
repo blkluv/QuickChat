@@ -20,15 +20,16 @@ const PublicRoute = ({ children }) => {
     //   });
   }, []);
 
-  if (isLoading || authStatus == null) {
-    return <LoadingPage />;
-  }
+  // if (isLoading || authStatus == null) {
+  //   return <LoadingPage />;
+  // }
 
-  if (authStatus) {
-    return <Navigate to={`/dashboard`} />;
-  } else {
-    return children;
-  }
+  // if (authStatus) {
+  //   return <Navigate to={`/dashboard`} />;
+  // } else {
+  //   return children;
+  // }
+  return children;
 };
 
 export default PublicRoute;
