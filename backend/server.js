@@ -74,7 +74,11 @@ const sessionMiddleware = session({
   },
 });
 
-console.log("sameSite is: ", process.env.MODE === "production");
+console.log(
+  "sameSite is: ",
+  process.env.MODE === "production",
+  process.env.MODE
+);
 
 app.use(sessionMiddleware);
 
