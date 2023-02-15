@@ -12,7 +12,7 @@ const PublicRoute = ({ children }) => {
   const [isLoading, setIsLoading] = React.useState(null);
 
   React.useEffect(() => {
-    setIsLoading(true);
+    // setIsLoading(true);
     // checkIsAuth()
     //   .then((res) => {
     //     setAuthStatus(true);
