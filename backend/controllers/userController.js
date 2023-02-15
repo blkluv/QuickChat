@@ -35,6 +35,8 @@ const loginUser = async (req, res) => {
       //   `session=${req.session.id}; HttpOnly; Secure; SameSite=None; Max-Age=86400`
       // );
 
+      res.set("Set-Cookie", `session=${req.session.id}`);
+
       res.status(200).json({ csrfToken });
     } else {
       return res
