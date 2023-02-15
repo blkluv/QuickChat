@@ -13,16 +13,16 @@ const PublicRoute = ({ children }) => {
 
   React.useEffect(() => {
     setIsLoading(true);
-    checkIsAuth()
-      .then((res) => {
-        setAuthStatus(true);
-        setIsLoading(false);
-      })
-      .catch(async () => {
-        await dispatch(userLogoutAction());
-        setAuthStatus(false);
-        setIsLoading(false);
-      });
+    // checkIsAuth()
+    //   .then((res) => {
+    //     setAuthStatus(true);
+    //     setIsLoading(false);
+    //   })
+    //   .catch(async () => {
+    //     await dispatch(userLogoutAction());
+    //     setAuthStatus(false);
+    //     setIsLoading(false);
+    //   });
   }, []);
 
   if (isLoading || authStatus == null) {
