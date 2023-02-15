@@ -45,6 +45,7 @@ app.use(helmet());
 app.use((req, res, next) => {
   if (
     process.env.MODE === "production" &&
+    !req.secure &&
     req.headers["x-forwarded-proto"] !== "https"
   ) {
     console.log("forwarding http to https");
