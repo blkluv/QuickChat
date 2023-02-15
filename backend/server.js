@@ -72,7 +72,6 @@ const sessionMiddleware = session({
     // secure: process.env.MODE === "production", // only accept if HTTPS in production
     // httpOnly: true,
     maxAge: 86400,
-    sameSite: false,
     secure: true,
     httpOnly: true,
   },
