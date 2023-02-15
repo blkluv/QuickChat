@@ -74,11 +74,9 @@ const sessionMiddleware = session({
   },
 });
 
-console.log(
-  "sameSite is: ",
-  process.env.MODE === "production",
-  process.env.MODE
-);
+console.log("sameSite: ", process.env.MODE === "production" ? "none" : "lax");
+console.log("secure: ", process.env.MODE === "production");
+console.log("httpOnly: ", true);
 
 app.use(sessionMiddleware);
 
