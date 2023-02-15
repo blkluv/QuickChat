@@ -30,10 +30,10 @@ const loginUser = async (req, res) => {
 
       console.log("sessionID: ", req.session.id);
 
-      res.set(
-        "Set-Cookie",
-        `session=${req.session.id}; HttpOnly; Secure; SameSite=None; Max-Age=86400`
-      );
+      // res.set(
+      //   "Set-Cookie",
+      //   `session=${req.session.id}; HttpOnly; Secure; SameSite=None; Max-Age=86400`
+      // );
 
       res.status(200).json({ csrfToken });
     } else {
