@@ -65,7 +65,7 @@ const sessionMiddleware = session({
   }),
   secret: process.env.RDSECRET, // sign the session ID cookie
   resave: false, // whether the session should be saved to the session store on every request
-  saveUninitialized: false,
+  saveUninitialized: true,
   cookie: {
     maxAge: parseInt(process.env.CK_LIFETIME), // 1 day * 24hr * 60 min * 60 sec
     sameSite: process.env.MODE === "production" ? "none" : "lax",
