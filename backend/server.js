@@ -1,6 +1,5 @@
 import dotenv from "dotenv";
 dotenv.config();
-import https from "https";
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
@@ -91,13 +90,13 @@ const options = {
   cert: fs.readFileSync("path/to/ssl/cert.pem"),
 };
 
-const server = https.createServer(options, app);
+const server = http.createServer(app);
 registerSocketServer(server, sessionMiddleware);
 
 // server listen to the Port
 const PORT = process.env.PORT;
 server.listen(PORT, () => {
-  console.log(`HTTPS Server Running on port ${PORT}`);
+  console.log(`HTTP Server Running on port ${PORT}`);
 });
 
 export { redisClient };
