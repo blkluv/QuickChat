@@ -84,12 +84,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", MessageRoutes);
 
-// SSL/TLS certificates for HTTPS
-const options = {
-  key: fs.readFileSync("path/to/ssl/key.pem"),
-  cert: fs.readFileSync("path/to/ssl/cert.pem"),
-};
-
 const server = http.createServer(app);
 registerSocketServer(server, sessionMiddleware);
 
