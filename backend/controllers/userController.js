@@ -28,6 +28,10 @@ const loginUser = async (req, res) => {
       req.session.csrfToken = csrfToken;
       req.session.isAuthenticated = true;
 
+      console.log("sessionID: ", req.session.id);
+
+      res.set("Set-Cookie", `session=${req.session.id}`);
+
       res.status(200).json({ csrfToken });
     } else {
       return res
