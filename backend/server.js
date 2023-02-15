@@ -60,8 +60,10 @@ app.use((req, res, next) => {
     req.get("x-forwarded-proto") !== "https" &&
     process.env.MODE !== "development"
   ) {
+    console.log("forwarding http to https");
     return res.redirect("https://" + req.get("host") + req.url);
   }
+  console.log("not forwarding");
   next();
 });
 
