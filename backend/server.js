@@ -43,18 +43,26 @@ app.use((err, req, res, next) => {
 app.use(helmet());
 
 app.use((req, res, next) => {
+  // if (
+  //   process.env.MODE === "production" &&
+  //   (!req.secure &&
+  //   req.headers["x-forwarded-proto"] !== "https")
+  // ) {
+  //   console.log("forwarding http to https");
+  //   return res.redirect("https://" + req.headers.host + req.url);
+  // } else {
+  //   console.log(req.secure);
+  //   console.log(req.protocol);
+  //   return next();
+  // }
   if (
-    process.env.MODE === "production" &&
     !req.secure &&
-    req.headers["x-forwarded-proto"] !== "https"
+    req.get("x-forwarded-proto") !== "https" &&
+    process.env.MODE !== "development"
   ) {
-    console.log("forwarding http to https");
-    return res.redirect("https://" + req.headers.host + req.url);
-  } else {
-    console.log(req.secure);
-    console.log(req.protocol);
-    return next();
+    return res.redirect("https://" + req.get("host") + req.url);
   }
+  next();
 });
 
 // connect and test to PostgreSQL
