@@ -8,7 +8,7 @@ async function checkIsAuth() {
 }
 
 async function loginAPI(data) {
-  return await axios.post("/api/auth/login", data, { withCredentials: true });
+  return await axios.post("/api/auth/login", data);
 }
 
 async function registerAPI(data) {

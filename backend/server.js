@@ -40,7 +40,7 @@ app.use((err, req, res, next) => {
   }
 });
 
-// app.use(helmet());
+app.use(helmet());
 
 // connect and test to PostgreSQL
 connectDB();
@@ -71,6 +71,7 @@ const sessionMiddleware = session({
     sameSite: process.env.MODE === "production" ? "none" : "lax",
     secure: process.env.MODE === "production", // only accept if HTTPS in production
     httpOnly: true,
+    domain: "https://quickchat-app.netlify.app",
   },
 });
 
