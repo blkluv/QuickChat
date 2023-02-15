@@ -42,37 +42,45 @@ app.use((err, req, res, next) => {
 
 app.use(helmet());
 
+app.set("trust proxy", 1); // trust the first proxy
 app.use((req, res, next) => {
-  // if (
-  //   process.env.MODE === "production" &&
-  //   (!req.secure &&
-  //   req.headers["x-forwarded-proto"] !== "https")
-  // ) {
-  //   console.log("forwarding http to https");
-  //   return res.redirect("https://" + req.headers.host + req.url);
-  // } else {
-  //   console.log(req.secure);
-  //   console.log(req.protocol);
-  //   return next();
-  // }
-
-  console.log(req.protocol, req.headers["x-forwarded-proto"]);
-
-  if (req.protocol === "http") {
-    return res.redirect("https://" + req.get("host") + req.url);
+  if (req.headers["x-forwarded-proto"] === "https") {
+    req.protocol = "https";
   }
-
-  if (
-    !req.secure &&
-    req.get("x-forwarded-proto") !== "https" &&
-    process.env.MODE !== "development"
-  ) {
-    console.log("forwarding http to https");
-    return res.redirect("https://" + req.get("host") + req.url);
-  }
-  console.log("not forwarding");
   next();
 });
+
+// app.use((req, res, next) => {
+//   // if (
+//   //   process.env.MODE === "production" &&
+//   //   (!req.secure &&
+//   //   req.headers["x-forwarded-proto"] !== "https")
+//   // ) {
+//   //   console.log("forwarding http to https");
+//   //   return res.redirect("https://" + req.headers.host + req.url);
+//   // } else {
+//   //   console.log(req.secure);
+//   //   console.log(req.protocol);
+//   //   return next();
+//   // }
+
+//   console.log(req.protocol, req.headers["x-forwarded-proto"]);
+
+//   if (req.protocol === "http") {
+//     return res.redirect("https://" + req.get("host") + req.url);
+//   }
+
+//   if (
+//     !req.secure &&
+//     req.get("x-forwarded-proto") !== "https" &&
+//     process.env.MODE !== "development"
+//   ) {
+//     console.log("forwarding http to https");
+//     return res.redirect("https://" + req.get("host") + req.url);
+//   }
+//   console.log("not forwarding");
+//   next();
+// });
 
 // connect and test to PostgreSQL
 connectDB();
