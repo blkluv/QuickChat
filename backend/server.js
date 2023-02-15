@@ -74,6 +74,8 @@ const sessionMiddleware = session({
   },
 });
 
+console.log(sessionMiddleware);
+
 app.use(sessionMiddleware);
 
 // request parsing
