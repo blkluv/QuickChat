@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
+import https from "https";
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
@@ -69,8 +70,7 @@ const sessionMiddleware = session({
   cookie: {
     maxAge: parseInt(process.env.CK_LIFETIME), // 1 day * 24hr * 60 min * 60 sec
     sameSite: process.env.MODE === "production" ? "none" : "lax",
-    // secure: process.env.MODE === "production", // only accept if HTTPS in production
-    secure: false,
+    secure: process.env.MODE === "production", // only accept if HTTPS in production
     httpOnly: true,
   },
 });
@@ -85,13 +85,19 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", MessageRoutes);
 
-const server = http.createServer(app);
+// SSL/TLS certificates for HTTPS
+const options = {
+  key: fs.readFileSync("path/to/ssl/key.pem"),
+  cert: fs.readFileSync("path/to/ssl/cert.pem"),
+};
+
+const server = https.createServer(options, app);
 registerSocketServer(server, sessionMiddleware);
 
 // server listen to the Port
 const PORT = process.env.PORT;
 server.listen(PORT, () => {
-  console.log(`Server Running on port ${PORT}`);
+  console.log(`HTTPS Server Running on port ${PORT}`);
 });
 
 export { redisClient };
