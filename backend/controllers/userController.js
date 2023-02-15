@@ -27,6 +27,12 @@ const loginUser = async (req, res) => {
       req.session.username = user.username;
       req.session.csrfToken = csrfToken;
       req.session.isAuthenticated = true;
+
+      res.cookie("token", "xxx-xxx-xxx", {
+        maxAge: 24 * 60 * 60 * 1000,
+        httpOnly: true,
+        SameSite: "None",
+      });
       res.status(200).json({ csrfToken });
     } else {
       return res

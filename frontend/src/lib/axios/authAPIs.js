@@ -3,17 +3,12 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = `https://quickchat-production.up.railway.app`;
 
-const instance = axios.create({
-  withCredentials: true,
-  baseURL: `https://quickchat-production.up.railway.app`,
-});
-
 async function checkIsAuth() {
   return await axios.get("/api/auth/checkAuth");
 }
 
 async function loginAPI(data) {
-  return await instance.post("/api/auth/login", data);
+  return await axios.post("/api/auth/login", data);
 }
 
 async function registerAPI(data) {
