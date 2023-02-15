@@ -16,7 +16,7 @@ export const socketConnectHandler = async (socket) => {
     socket.id
   );
 
-  console.log(socket);
+  console.log(socket.request.session);
 
   // // send username to client
   // io.to(socket.id).emit("get-username", {
