@@ -71,7 +71,7 @@ const sessionMiddleware = session({
     // sameSite: process.env.MODE === "production" ? "none" : "lax",
     // secure: process.env.MODE === "production", // only accept if HTTPS in production
     sameSite: "lax",
-    secure: false,
+    secure: true,
     httpOnly: true,
   },
 });
