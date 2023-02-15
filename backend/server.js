@@ -50,7 +50,11 @@ app.use((req, res, next) => {
   ) {
     console.log("forwarding http to https");
     return res.redirect("https://" + req.headers.host + req.url);
-  } else return next();
+  } else {
+    console.log(req.secure);
+    console.log(req.protocol);
+    return next();
+  }
 });
 
 // connect and test to PostgreSQL
