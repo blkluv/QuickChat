@@ -44,7 +44,7 @@ app.use(helmet());
 
 app.set("trust proxy", 1); // trust the first proxy
 app.use((req, res, next) => {
-  if (req.headers["x-forwarded-proto"] === "https") {
+  if (req.secure) {
     req.protocol = "https";
   }
   next();
