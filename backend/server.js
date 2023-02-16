@@ -19,6 +19,7 @@ const allowedOrigins = [
   "https://quickchat-app.netlify.app",
 ];
 
+// CORS Setting
 const corsOptions = {
   origin: (origin, callback) => {
     if (allowedOrigins.includes(origin)) {
@@ -29,9 +30,7 @@ const corsOptions = {
   },
   credentials: true,
 };
-
 app.use(cors(corsOptions));
-// handle Cors Error
 app.use((err, req, res, next) => {
   if (err instanceof Error && err.message === "Not allowed by CORS") {
     res.status(403).json({ error: "CORS not allowed" });
@@ -40,8 +39,12 @@ app.use((err, req, res, next) => {
   }
 });
 
-app.set("trust proxy", 1); // trust the first proxy
+// enable trust proxy as railway.app have a proxy in front of our express server.
+app.set("trust proxy", 1);
+
+// enforce HTTPS
 app.use((req, res, next) => {
+  console.log(req.protocol);
   if (!req.secure) {
     return res.redirect("https://" + req.headers.host + req.url);
   }
@@ -49,38 +52,6 @@ app.use((req, res, next) => {
 });
 
 app.use(helmet());
-
-// app.use((req, res, next) => {
-//   // if (
-//   //   process.env.MODE === "production" &&
-//   //   (!req.secure &&
-//   //   req.headers["x-forwarded-proto"] !== "https")
-//   // ) {
-//   //   console.log("forwarding http to https");
-//   //   return res.redirect("https://" + req.headers.host + req.url);
-//   // } else {
-//   //   console.log(req.secure);
-//   //   console.log(req.protocol);
-//   //   return next();
-//   // }
-
-//   console.log(req.protocol, req.headers["x-forwarded-proto"]);
-
-//   if (req.protocol === "http") {
-//     return res.redirect("https://" + req.get("host") + req.url);
-//   }
-
-//   if (
-//     !req.secure &&
-//     req.get("x-forwarded-proto") !== "https" &&
-//     process.env.MODE !== "development"
-//   ) {
-//     console.log("forwarding http to https");
-//     return res.redirect("https://" + req.get("host") + req.url);
-//   }
-//   console.log("not forwarding");
-//   next();
-// });
 
 // connect and test to PostgreSQL
 connectDB();
@@ -130,7 +101,7 @@ registerSocketServer(server, sessionMiddleware);
 // server listen to the Port
 const PORT = process.env.PORT;
 server.listen(PORT, () => {
-  console.log(`HTTP Server Running on port ${PORT}`);
+  console.log(`Server Running on port ${PORT}`);
 });
 
 export { redisClient };
