@@ -42,8 +42,8 @@ app.use((err, req, res, next) => {
 
 app.set("trust proxy", 1); // trust the first proxy
 app.use((req, res, next) => {
-  if (req.secure) {
-    req.protocol = "https";
+  if (!req.secure) {
+    return res.redirect("https://" + req.headers.host + req.url);
   }
   next();
 });
