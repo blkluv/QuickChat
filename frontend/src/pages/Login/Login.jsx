@@ -29,6 +29,8 @@ export default function Login() {
     }
   }
 
+  console.log(document.cookie);
+
   return (
     <div className="flex h-screen w-screen items-center justify-center ">
       <AuthBox>
