@@ -5,7 +5,7 @@ export default function LandingPage() {
   const navigate = useNavigate();
 
   return (
-    <div></div>
+    <div className="flex h-screen w-screen bg-orange-200"></div>
     // <div className="flex h-screen w-screen items-center justify-center overflow-y-auto bg-[url('../assets/bg-snowy-mint.jpg')] bg-cover p-7">
     //   <div className="flex w-30rem flex-col items-center text-center">
     //     <h1 className="text-5xl font-semibold sm:text-7xl">
