@@ -7,6 +7,10 @@ export default function VideoPlayer({ stream, isRemote = false }) {
     ?.getTracks()
     .find((track) => track.kind === "video").enabled;
 
+  if (isRemote) {
+    console.log("Received remote Stream: ", stream);
+  }
+
   React.useEffect(() => {
     if (videoRef.current) videoRef.current.srcObject = stream;
   }, [stream]);
