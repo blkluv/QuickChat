@@ -17,7 +17,7 @@ export default function VideoPlayer({ stream, isRemote = false }) {
 
   return (
     <div className="relative m-2 flex min-h-24 min-w-24 justify-center overflow-hidden rounded-xl border-2 border-slate-600">
-      <video className="z-20" ref={videoRef} autoPlay />
+      <video className="z-20" ref={videoRef} autoPlay="true" />
 
       {stream ? (
         !videoOn ? (
