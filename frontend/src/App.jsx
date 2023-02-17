@@ -10,30 +10,40 @@ import { VideoProvider } from "./context/VideoContext";
 import LandingPage from "./pages/LandingPage";
 
 function App() {
+  const [height, setHeight] = React.useState(window.innerHeight);
+
+  React.useEffect(() => {
+    const handleResize = () => setHeight(window.innerHeight);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="" element={<LandingPage />} />
-        <Route path="*" element={<LandingPage />} />
-        <Route path="/login" element={<PublicRoute children={<Login />} />} />
-        <Route
-          path="/register"
-          element={<PublicRoute children={<Register />} />}
-        />
-        <Route
-          path="/dashboard"
-          element={
-            <PrivateRoute
-              children={
-                <VideoProvider>
-                  <Dashboard />
-                </VideoProvider>
-              }
-            />
-          }
-        />
-      </Routes>
-    </BrowserRouter>
+    <div style={{ height: height }}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="" element={<LandingPage />} />
+          <Route path="*" element={<LandingPage />} />
+          <Route path="/login" element={<PublicRoute children={<Login />} />} />
+          <Route
+            path="/register"
+            element={<PublicRoute children={<Register />} />}
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute
+                children={
+                  <VideoProvider>
+                    <Dashboard />
+                  </VideoProvider>
+                }
+              />
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
