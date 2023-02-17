@@ -7,7 +7,7 @@ import MessageDetailSideBar from "./MessageDetailSideBar/MessageDetailSideBar";
 export default function Dashboard() {
   const [openSideBar, setOpenSideBar] = React.useState(false);
   const [openDetailSideBar, setOpenDetailSideBar] = React.useState(false);
-  const [height, setHeight] = React.useState(window.innerHeight - 200);
+  const [height, setHeight] = React.useState(window.innerHeight);
 
   React.useEffect(() => {
     const handleResize = () => setHeight(window.innerHeight);
