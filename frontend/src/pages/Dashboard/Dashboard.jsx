@@ -7,31 +7,22 @@ import MessageDetailSideBar from "./MessageDetailSideBar/MessageDetailSideBar";
 export default function Dashboard() {
   const [openSideBar, setOpenSideBar] = React.useState(false);
   const [openDetailSideBar, setOpenDetailSideBar] = React.useState(false);
-  const [height, setHeight] = React.useState(window.innerHeight);
-
-  React.useEffect(() => {
-    const handleResize = () => setHeight(window.innerHeight);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   React.useEffect(() => {
     connectWithSocketServer();
   }, []);
 
   return (
-    <div style={{ height: height }}>
-      <div className="relative flex h-screen flex-1 overflow-hidden">
-        <SideBar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar} />
-        <MessageContent
-          setOpenSideBar={setOpenSideBar}
-          setOpenDetailSideBar={setOpenDetailSideBar}
-        />
-        <MessageDetailSideBar
-          openDetailSideBar={openDetailSideBar}
-          setOpenDetailSideBar={setOpenDetailSideBar}
-        />
-      </div>
+    <div className="relative flex h-screen flex-1 overflow-hidden">
+      <SideBar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar} />
+      <MessageContent
+        setOpenSideBar={setOpenSideBar}
+        setOpenDetailSideBar={setOpenDetailSideBar}
+      />
+      <MessageDetailSideBar
+        openDetailSideBar={openDetailSideBar}
+        setOpenDetailSideBar={setOpenDetailSideBar}
+      />
     </div>
   );
 }
