@@ -6,6 +6,8 @@ import { store } from "./store/store";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    <App />
+    <div className="absolute inset-0">
+      <App />
+    </div>
   </Provider>
 );
