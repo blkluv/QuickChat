@@ -14,15 +14,22 @@ export default function Dashboard() {
   }, []);
 
   React.useEffect(() => {
-    function handleResize() {
-      setHeight(window.innerHeight);
+    // function handleResize() {
+    //   setHeight(window.innerHeight);
+    // }
+    // window.addEventListener("resize", handleResize);
+    // return () => window.removeEventListener("resize", handleResize);
+    function appHeight() {
+      const doc = document.documentElement;
+      doc.style.setProperty("--vh", window.innerHeight * 0.01 + "px");
     }
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+
+    window.addEventListener("resize", appHeight);
+    appHeight();
   }, []);
 
   return (
-    <div className="fixed flex flex-1 overflow-hidden">
+    <div className="relative flex flex-1 overflow-hidden">
       <SideBar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar} />
       <MessageContent
         setOpenSideBar={setOpenSideBar}
