@@ -23,8 +23,8 @@ Design Documentations can be found [here](./documentations).
 ## Screenshots
 
 <div align="center">
-  <img src="./documentations/screenshots/screenshot-landing.png" alt="screenshot" width="200">
-  <img src="./documentations/screenshots/screenshot-home.PNG" alt="screenshot" width="200">
+  <img src="./documentations/screenshots/screenshot-landing.png" alt="screenshot">
+  <img src="./documentations/screenshots/screenshot-home.PNG" alt="screenshot">
 </div>
 
 ## Features
