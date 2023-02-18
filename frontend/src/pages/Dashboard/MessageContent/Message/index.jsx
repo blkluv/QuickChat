@@ -22,11 +22,11 @@ export default function Message() {
       {isLoading ? <LoadingModal /> : null}
       {videoCallingInfo.isCalling ? <VideoWindow /> : null}
       <div className="relative flex h-full w-full">
-        {/* <MessageWindow
+        <MessageWindow
           messagesRef={messagesRef}
           scrollDown={scrollDown}
           setIsLoading={setIsLoading}
-        /> */}
+        />
         <MessageInput scrollDown={scrollDown} />
       </div>
     </div>
