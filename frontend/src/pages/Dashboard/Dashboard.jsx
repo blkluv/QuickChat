@@ -7,24 +7,13 @@ import MessageDetailSideBar from "./MessageDetailSideBar/MessageDetailSideBar";
 export default function Dashboard() {
   const [openSideBar, setOpenSideBar] = React.useState(false);
   const [openDetailSideBar, setOpenDetailSideBar] = React.useState(false);
-  const [height, setHeight] = React.useState(window.innerHeight);
 
   React.useEffect(() => {
+    document.documentElement.style.setProperty(
+      "--vh",
+      window.innerHeight * 0.01 + "px"
+    );
     connectWithSocketServer();
-  }, []);
-
-  React.useEffect(() => {
-    // function handleResize() {
-    //   setHeight(window.innerHeight);
-    // }
-    // window.addEventListener("resize", handleResize);
-    // return () => window.removeEventListener("resize", handleResize);
-    // function appHeight() {
-    //   const doc = document.documentElement;
-    //   doc.style.setProperty("--vh", window.innerHeight * 0.01 + "px");
-    // }
-    // window.addEventListener("resize", appHeight);
-    // appHeight();
   }, []);
 
   return (
