@@ -18,8 +18,7 @@ export default function MessageContent({
         setOpenSideBar={setOpenSideBar}
         setOpenDetailSideBar={setOpenDetailSideBar}
       />
-      <div>b</div>
-      {/* {chatRoomName ? <Message /> : <WelcomeMessage />} */}
+      {chatRoomName ? <Message /> : <WelcomeMessage />}
     </div>
   );
 }
