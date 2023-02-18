@@ -54,7 +54,6 @@ html {
   height: calc(100vh - 4rem);
 }
 
-body {
-  position: fixed;
-  height: 100%;
+.h-full-mobile {
+  height: calc(100vh - calc(100vh - 100%));
 }
