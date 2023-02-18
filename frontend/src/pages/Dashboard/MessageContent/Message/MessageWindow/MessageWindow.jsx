@@ -67,7 +67,7 @@ export default function MessageWindow({
     <div
       ref={messagesRef}
       onScroll={handleScroll}
-      className="antiscroll-inner w-full overflow-y-auto pb-28"
+      className="antiscroll-inner w-full overflow-y-auto pb-24"
       style={{ height: height }}
     >
       {messages.map((message) =>
