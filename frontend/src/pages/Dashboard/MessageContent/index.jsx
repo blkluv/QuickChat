@@ -13,12 +13,12 @@ export default function MessageContent({
   );
 
   return (
-    <div className="flex flex-1 flex-col">
-      <AppBar
+    <div className="flex h-full w-full flex-col bg-orange-400">
+      {/* <AppBar
         setOpenSideBar={setOpenSideBar}
         setOpenDetailSideBar={setOpenDetailSideBar}
       />
-      {chatRoomName ? <Message /> : <WelcomeMessage />}
+      {chatRoomName ? <Message /> : <WelcomeMessage />} */}
     </div>
   );
 }
