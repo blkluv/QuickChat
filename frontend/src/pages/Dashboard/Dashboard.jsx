@@ -24,12 +24,10 @@ export default function Dashboard() {
 
   return (
     <div
-      className="relative flex h-screen flex-1 flex-col justify-between overflow-hidden"
+      className="relative flex h-screen flex-1 overflow-hidden"
       style={{ height: height }}
     >
-      <div>a</div>
-      <div>b</div>
-      {/* <SideBar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar} />
+      <SideBar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar} />
       <MessageContent
         setOpenSideBar={setOpenSideBar}
         setOpenDetailSideBar={setOpenDetailSideBar}
@@ -37,7 +35,7 @@ export default function Dashboard() {
       <MessageDetailSideBar
         openDetailSideBar={openDetailSideBar}
         setOpenDetailSideBar={setOpenDetailSideBar}
-      /> */}
+      />
     </div>
   );
 }
