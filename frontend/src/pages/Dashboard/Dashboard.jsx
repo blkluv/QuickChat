@@ -13,12 +13,23 @@ export default function Dashboard() {
     connectWithSocketServer();
   }, []);
 
+  useEffect(() => {
+    function handleResize() {
+      setHeight(window.innerHeight);
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <div className="absolute inset-0">
-      <div className="relative flex h-screen flex-1 flex-col justify-between overflow-hidden">
-        <div>a</div>
-        <div>b</div>
-        {/* <SideBar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar} />
+    <div
+      className="relative flex h-screen flex-1 flex-col justify-between overflow-hidden"
+      style={{ height: height }}
+    >
+      <div>a</div>
+      <div>b</div>
+      {/* <SideBar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar} />
       <MessageContent
         setOpenSideBar={setOpenSideBar}
         setOpenDetailSideBar={setOpenDetailSideBar}
@@ -27,7 +38,6 @@ export default function Dashboard() {
         openDetailSideBar={openDetailSideBar}
         setOpenDetailSideBar={setOpenDetailSideBar}
       /> */}
-      </div>
     </div>
   );
 }
