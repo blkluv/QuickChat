@@ -24,7 +24,7 @@ export default function Dashboard() {
   return (
     <div
       className="relative flex flex-1 overflow-hidden"
-      style={{ height: `${height}px` }}
+      style={{ maxHeight: "100%" }}
     >
       <SideBar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar} />
       <MessageContent
