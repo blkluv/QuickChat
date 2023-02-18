@@ -14,7 +14,7 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className="relative flex h-screen flex-1 justify-between overflow-hidden">
+    <div className="relative flex h-screen flex-1 flex-col justify-between overflow-hidden">
       {/* <SideBar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar} />
       <MessageContent
         setOpenSideBar={setOpenSideBar}
