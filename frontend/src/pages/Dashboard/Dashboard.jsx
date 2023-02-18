@@ -14,8 +14,8 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className="relative flex h-screen flex-1 overflow-hidden">
-      <SideBar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar} />
+    <div className="relative flex h-screen flex-1 justify-between overflow-hidden">
+      {/* <SideBar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar} />
       <MessageContent
         setOpenSideBar={setOpenSideBar}
         setOpenDetailSideBar={setOpenDetailSideBar}
@@ -23,7 +23,9 @@ export default function Dashboard() {
       <MessageDetailSideBar
         openDetailSideBar={openDetailSideBar}
         setOpenDetailSideBar={setOpenDetailSideBar}
-      />
+      /> */}
+      <div>a</div>
+      <div>b</div>
     </div>
   );
 }
