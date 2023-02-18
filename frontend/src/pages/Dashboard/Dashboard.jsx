@@ -9,15 +9,15 @@ export default function Dashboard() {
   const [openDetailSideBar, setOpenDetailSideBar] = React.useState(false);
 
   React.useEffect(() => {
-    document.documentElement.style.setProperty(
-      "--vh",
-      window.innerHeight * 0.01 + "px"
-    );
-    connectWithSocketServer();
+    // document.documentElement.style.setProperty(
+    //   "--vh",
+    //   window.innerHeight * 0.01 + "px"
+    // );
+    // connectWithSocketServer();
   }, []);
 
   return (
-    <div className="relative flex h-screen max-h-full flex-1 overflow-hidden">
+    <div className="relative flex flex-1 overflow-hidden">
       <SideBar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar} />
       <MessageContent
         setOpenSideBar={setOpenSideBar}
