@@ -24,6 +24,23 @@ Design Documentations can be found [here](./documentations).
 
 ## Features
 
+- Real-time messaging
+- Group chats
+- Direct messaging
+- Message history & fetch message
+- Emojis support
+- Audio and video calls
+- Multi-device compatibility
+- Responsive Layout
+- Online indicators
+- User authentication
+- Avatar
+- Rate Limiter
+- Screen sharing
+- Firends list
+- Group Chat All Participants info
+- Friend Requests
+
 ## Technologies
 
 ## Improvement
