@@ -13,7 +13,7 @@ export default function Dashboard() {
     connectWithSocketServer();
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     function handleResize() {
       setHeight(window.innerHeight);
     }
