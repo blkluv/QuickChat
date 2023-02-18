@@ -24,7 +24,7 @@ export default function Dashboard() {
   return (
     <div
       className="relative flex flex-1 overflow-hidden"
-      style={{ minHeight : height }}
+      style={{ height: `${height}px` }}
     >
       <SideBar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar} />
       <MessageContent
