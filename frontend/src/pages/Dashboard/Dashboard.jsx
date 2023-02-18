@@ -14,18 +14,16 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className="absolute inset-0">
-      <div className="relative flex h-screen flex-1 overflow-hidden">
-        <SideBar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar} />
-        <MessageContent
-          setOpenSideBar={setOpenSideBar}
-          setOpenDetailSideBar={setOpenDetailSideBar}
-        />
-        <MessageDetailSideBar
-          openDetailSideBar={openDetailSideBar}
-          setOpenDetailSideBar={setOpenDetailSideBar}
-        />
-      </div>
+    <div className="relative flex h-screen flex-1 overflow-hidden">
+      <SideBar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar} />
+      <MessageContent
+        setOpenSideBar={setOpenSideBar}
+        setOpenDetailSideBar={setOpenDetailSideBar}
+      />
+      <MessageDetailSideBar
+        openDetailSideBar={openDetailSideBar}
+        setOpenDetailSideBar={setOpenDetailSideBar}
+      />
     </div>
   );
 }
